@@ -2,21 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-
-/* tll is the implementation of two linked list in C */
-struct llElem;
-typedef struct llElem {
-    void* data;
-    struct llElem* prev;
-    struct llElem* next;
-} llElem;
-
-struct llList;
-typedef struct llList {
-    int count;
-    llElem *head;
-    llElem *tail;
-} llList;
+#include "tll.h"
 
 llList* tll_create(void) {
     llList* list = calloc(1, sizeof(llList));
@@ -180,7 +166,7 @@ static void tll_add(llList* list, llElem* elt) {
     list->count++;
 }
 
-llList* tll_merge_sort(llList* list1, llList* list2) {
+static llList* tll_merge_sort(llList* list1, llList* list2) {
     llList* sorted = tll_create();
     llElem* smallest;
 
